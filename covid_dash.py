@@ -22,9 +22,9 @@ df_final = df_final[["Country_Region", "Province_State", "Lat",
 
 def convertTime(t):
 
-t = int(t)
+    t = int(t)
 
-return datetime.fromtimestamp(t)
+    return datetime.fromtimestamp(t)
 
 df_final = df_final.dropna(subset=["Last_Update"])
 df_final["Province_State"].fillna(value="", inplace=True)
