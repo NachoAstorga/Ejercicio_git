@@ -12,8 +12,7 @@ def json_to_df(data):
         latitude = i.get('lat', None)
         longitude = i.get('lon', None)
         name = i.get('tags', {}).get('name', "NO NAME")
-        street = i.get('tags', {}).get('addr:street', "NO
-        STREET")
+        street = i.get('tags', {}).get('addr:street', "NO STREET")
         number = i.get('tags', {}).get('addr:housenumber', 9999)
         places['category'].append(tipo)
         places['lat'].append(latitude)
@@ -22,7 +21,8 @@ def json_to_df(data):
         places['address'].append(street + ' ' + str(number))
     return pd.DataFrame(places)
 
-list_health = [“bichitos de colores súper chulos”]
+
+list_health = ["hospital", "clinic", "doctors"]
 
 dataframes = []
 for amenity in list_health: 
@@ -56,6 +56,7 @@ some_map2 = folium.Map(location=coordenadas_TB, zoom_start=14)
 some_map2.add_child(folium.Marker(location=[40.421703,-3.691725], popup="The Bridge", 
                                icon=folium.Icon(icon='home', color='red')))
     
+
 mc = MarkerCluster()
 
 for row in health_csv.itertuples():
@@ -65,4 +66,4 @@ for row in health_csv.itertuples():
 some_map2.add_child(mc)
 
 
-some_map2.save('templates/bichitosdecolores.html')
+some_map2.save('templates/map.html')
